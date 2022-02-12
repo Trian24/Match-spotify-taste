@@ -1,0 +1,22 @@
+{
+  "author": "Ren",
+  "name": "match-spotify",
+  "description": "Match your taste in spotify",
+  "version": "0.0.2",
+  "type": "module",
+  "dependencies": {
+    "cookie-parser": "1.3.2",
+    "cors": "^2.8.4",
+    "express": "~4.16.0",
+    "node-fetch": "^3.1.0",
+    "querystring": "~0.2.0",
+    "request": "~2.83.0",
+    "spotify-web-api-node": "^5.0.2"
+  },
+  "engines": {
+    "node": "16.x"
+  },
+  "scripts": {
+    "start": "node app.js"
+  }
+}
