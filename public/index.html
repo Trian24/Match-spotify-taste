@@ -252,7 +252,6 @@
 
     <script src="//cdnjs.cloudflare.com/ajax/libs/handlebars.js/2.0.0-alpha.1/handlebars.min.js"></script>
     <script src="./js/bootstrap.bundle.min.js"></script>
-    <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
     <script>
         let _genres = [], _artists = [], _matchArtists = [], _matchGenres = [];
 
@@ -289,14 +288,13 @@
                 login.style.display = "block";
                 loggedin.style.display = "none";
                 if (user_id) {
-                    $.ajax({
-                        url: `/me/${user_id}`,
-                        success: function (response) {
+                    fetch(`/me/${user_id}`)
+                        .then(res => res.json())
+                        .then(res => {
                             userProfilePlaceholder.innerHTML = userProfileTemplate(response);
                             login.style.display = "none";
                             loggedin.style.display = "block";
-                        }
-                    });
+                        })
                 }
             }
         }
