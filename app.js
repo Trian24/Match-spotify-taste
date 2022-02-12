@@ -90,5 +90,5 @@ app.get('/playlists/:user_id/genres', async (req, res) => requestHandler.getGenr
 
 app.get('/match/:user_id/:friend_id', async (req, res) => requestHandler.matchTaste(req, res));
 
-console.log('Listening on 8888');
-app.listen(8888);
+console.log('Listening on ' + (process.env.PORT || 8888));
+app.listen(process.env.PORT || 8888);
