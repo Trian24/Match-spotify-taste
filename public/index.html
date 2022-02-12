@@ -291,7 +291,7 @@
                     fetch(`/me/${user_id}`)
                         .then(res => res.json())
                         .then(res => {
-                            userProfilePlaceholder.innerHTML = userProfileTemplate(response);
+                            userProfilePlaceholder.innerHTML = userProfileTemplate(res);
                             login.style.display = "none";
                             loggedin.style.display = "block";
                         })
