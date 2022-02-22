@@ -1,4 +1,4 @@
-const redirect_uri = 'https://match-taste.herokuapp.com/callback',
+const redirect_uri = `${process.env.HOSTNAME}callback`,
   client_id = 'acf9cb927d5f4e05b950ec62381f76f1',
   client_secret = 'bed105b30a7b44ba8e63521bee82d545',
   generateRandomString = function (length) {

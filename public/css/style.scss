@@ -1,0 +1,11 @@
+$blue: #016FB9;
+$red: #EC4E20;
+$yellow: #FF9505;
+$light: #EDE3E4;
+
+$primary: $light;
+$border-color: $blue;
+
+@import "../../node_modules/bootstrap/scss/bootstrap.scss";
+@import "./main";
+@import url('http://fonts.cdnfonts.com/css/gotham');

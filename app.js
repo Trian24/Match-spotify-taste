@@ -7,6 +7,7 @@
  * https://developer.spotify.com/web-api/authorization-guide/#authorization_code_flow
  */
 
+import 'dotenv/config';
 import fetch from "node-fetch";
 import express from "express";
 import cors from "cors";
@@ -14,16 +15,17 @@ import cookieParser from 'cookie-parser';
 // var querystring = require('querystring');
 import { dirname } from 'path';
 import { fileURLToPath } from 'url';
-import { redirect_uri, client_id, client_secret, generateRandomString, stateKey, scope } from './public/js/options.js';
-import { authHandler, errorHandler } from './public/js/handler.js';
-import { requestHandler } from './public/js/requestHandler.js';
+import { redirect_uri, client_id, client_secret, generateRandomString, stateKey, scope } from './requestHandler/options.js';
+import { authHandler } from './requestHandler/handler.js';
+import { requestHandler } from './requestHandler/requestHandler.js';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 var app = express();
 app.use(express.static(__dirname + '/public'))
   .use(cors())
   .use(cookieParser())
-  .use(express.urlencoded({ extended: true }));
+  .use(express.urlencoded({ extended: true }))
+  .use('/css', express.static(__dirname + '/node_modules/bootstrap/dist/css'));
 
 app.get('/login', function (req, res) {
 
@@ -61,7 +63,6 @@ app.get('/callback', function (req, res) {
     })
       .then(resp => resp.json())
       .then(resp => {
-        console.log(resp);
         var access_token = resp.access_token;
         // use the access token to access the Spotify Web API
         fetch('https://api.spotify.com/v1/me', {
@@ -69,13 +70,12 @@ app.get('/callback', function (req, res) {
         })
           .then(resp => authHandler(resp))
           .then(resp => {
-            console.log(resp);
-            res.redirect('/#' + new URLSearchParams(`user_id=${resp.id}`)
+            res.redirect('/?' + new URLSearchParams(`user_id=${resp.id}`)
             )
           })
           .catch(err => {
-            // console.log(err);
-            res.redirect('/#' + new URLSearchParams(`#error=invalid_token`));
+            console.log(err)
+            res.redirect('/?' + new URLSearchParams(`error=invalid_token`));
           })
       })
       .catch(err => {

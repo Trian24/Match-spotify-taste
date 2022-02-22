@@ -48,16 +48,18 @@ class requestHandler {
       resp.forEach(r => {
         r['artists'].forEach(artist => {
           const curr_artist = artists[artists.findIndex(a => a.id == artist.id)];
+          const artist_url = artist.uri.replaceAll(':','/').replace('spotify','http://open.spotify.com')
           artist.genres.forEach(genre => {
             const found_index = genres.findIndex((g => g.name == genre));
             artists[artists.findIndex(a => a.id == artist.id)].image = artist.images;
+            artists[artists.findIndex(a => a.id == artist.id)].href = artist_url;
             if (found_index !== -1) {
               if (genres[found_index].artists.findIndex(a => a.id == artist.id) == -1) {
-                genres[found_index].artists.push({ id: artist.id, name: artist.name });
+                genres[found_index].artists.push({ id: artist.id, name: artist.name, href: artist_url });
                 genres[found_index].count += curr_artist.count;
               }
             } else {
-              genres.push({ name: genre, count: curr_artist.count, artists: [{ id: artist.id, name: artist.name }] });
+              genres.push({ name: genre, count: curr_artist.count, artists: [{ id: artist.id, name: artist.name, href: artist_url  }] });
             }
           })
         })
@@ -69,7 +71,6 @@ class requestHandler {
       .then(resp => authHandler(resp))
       .then(resp => {
         access_token = resp.access_token;
-        console.log(access_token);
         return fetch(`https://api.spotify.com/v1/users/${user_id}/playlists`, {
           headers: {
             'Authorization': 'Bearer ' + access_token
@@ -125,7 +126,7 @@ class requestHandler {
       .then(resp => {
         res.send(resp)
       })
-      .catch(err => errorHandler(err))
+      .catch(err => errorHandler(err, res))
   }
 
   static async getUserData(user_id) {
@@ -161,7 +162,6 @@ class requestHandler {
     let result = { artists: [], genres: [] };
 
     firstPlyst.artists.forEach(item_1 => {
-      console.log(item_1);
       const found = secondPlyst.artists.filter(item_2 => item_2.id == item_1.id)[0];
       if (found) result.artists.push({
         id: found.id,

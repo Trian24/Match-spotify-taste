@@ -3,69 +3,21 @@
 
 <head>
     <title>Match your spotify taste</title>
-    <link rel="stylesheet" href="./css/bootstrap.min.css">
-    <style type="text/css">
-        #login,
-        #loggedin,
-        #genres,
-        #match {
-            display: none;
-        }
-
-        .box-shadow {
-            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-        }
-
-        .w-60 {
-            width: 60% !important;
-        }
-
-        .text-overflow {
-            overflow: hidden;
-            text-overflow: ellipsis;
-            white-space: nowrap;
-            width: 500px;
-        }
-
-        .img-profile {
-            flex-grow: 2;
-            background-image: url('./img/earth.png');
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-            border-radius: 8000px;
-        }
-
-        .img-artist {
-            background-size: contain;
-        }
-
-        .border-left {
-            border-radius: 2000px;
-            border-top-left-radius: 8000px;
-            border-bottom-left-radius: 8000px;
-        }
-
-        .test {
-            flex: 2 0 auto;
-            height: auto;
-        }
-
-        .test::before {
-            content: '';
-            display: block;
-            padding-top: 100%;
-        }
-    </style>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
 </head>
 
 <body>
-    <div class="container p-5">
+    <div class="container py-5">
         <div>
-            <h1 class="text-center">Match your spotify playlist taste</h1>
+            <h1 class="text-center">Match Your Spotify Music Taste</h1>
             <div id="login">
                 <div class="w-100 d-flex flex-column justify-content-between align-items-center my-3">
-                    <a href="/login" class="btn btn-primary login my-5">Log in with Spotify</a>
+                    <a href="/login" class="btn btn-primary login my-5 rounded-pill" style="font-size: 1.5rem;">
+                        <i class="bi bi-spotify"></i>
+                        <b>Login</b>
+                    </a>
                     <div class="input-group w-50">
                         <input style="flex:5" id="url" type="text" class="form-control"
                             placeholder="Put your spotify profile URL here">
@@ -79,54 +31,153 @@
             <div id="user-profile">
             </div>
             <div class="w-100 d-flex flex-column justify-content-center align-items-center my-3">
-                <button class="btn btn-outline-primary my-3" onclick="getGenre()">Get your top Genres!</button>
-                <p>Or put your friend's spotify profile link down here to match your taste with them!</p>
-                <div class="input-group w-50 mb-3">
-                    <input style="flex:5" id="friendUrl" type="text" class="form-control"
-                        placeholder="Put your friend's spotify profile URL here">
-                    <button style="flex:1" onclick="matchTaste()" type="button"
-                        class="btn btn-outline-secondary">Submit</button>
+                <button id="get_genre_btn" class="btn btn-outline-primary black-bg my-3 transition fade-up-start"
+                    onclick="getGenre()" style="font-size: 1.25rem;">
+                    <b>Get your top Genres!</b>
+                </button>
+                <div id="match_taste_btn" class="transition fade-up-start">
+                    <p>Or put your friend's spotify profile link down here to match your taste with them!</p>
+                    <div class="input-group w-100 mb-3">
+                        <input style="flex:5" id="friendUrl" type="text" class="form-control"
+                            placeholder="Put your friend's spotify profile URL here">
+                        <button style="flex:1" onclick="getFriendId(event)" type="button"
+                            class="btn btn-outline-primary">Submit</button>
+                    </div>
                 </div>
             </div>
             <!-- Genre -->
-            <div id="genres" class="row my-3">
-                <div class="col-6">
-                    <div class="card p-3 box-shadow">
+            <div id="genres" class="row my-3 transition opacity-0">
+                <h3 class="text-center">Your Top Genres and Artists</h3>
+                <h4 class="text-center">based on your public playlists</h4>
+                <div class="col-md-6 col-sm-12 my-3">
+                    <div class="card p-3 box-shadow black-bg">
                         <h4 class="card-title">Top Genre</h4>
                         <table class="table">
                             <thead>
                                 <tr>
                                     <th class="col-2">#</th>
-                                    <th class="col-5">Genre</th>
-                                    <th class="col-5">Count</th>
+                                    <th class="col-6">Genre</th>
+                                    <th class="col-4">Count</th>
                                 </tr>
                             </thead>
                             <tbody id="genre-data">
+                                <tr>
+                                    <th>
+                                        <p class="placeholder-glow">
+                                            <span class="placeholder col-12"></span>
+                                        </p>
+                                    </th>
+                                    <td>
+                                        <p class="placeholder-glow">
+                                            <span class="placeholder col-12"></span>
+                                        </p>
+                                    </td>
+                                    <td>
+                                        <p class="placeholder-glow">
+                                            <span class="placeholder col-12"></span>
+                                        </p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>
+                                        <p class="placeholder-glow">
+                                            <span class="placeholder col-12"></span>
+                                        </p>
+                                    </th>
+                                    <td>
+                                        <p class="placeholder-glow">
+                                            <span class="placeholder col-12"></span>
+                                        </p>
+                                    </td>
+                                    <td>
+                                        <p class="placeholder-glow">
+                                            <span class="placeholder col-12"></span>
+                                        </p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>
+                                        <p class="placeholder-glow">
+                                            <span class="placeholder col-12"></span>
+                                        </p>
+                                    </th>
+                                    <td>
+                                        <p class="placeholder-glow">
+                                            <span class="placeholder col-12"></span>
+                                        </p>
+                                    </td>
+                                    <td>
+                                        <p class="placeholder-glow">
+                                            <span class="placeholder col-12"></span>
+                                        </p>
+                                    </td>
+                                </tr>
                             </tbody>
                         </table>
                     </div>
                 </div>
-                <div class="col-6">
-                    <div class="card p-3 box-shadow">
+                <div class="col-md-6 col-sm-12 my-3">
+                    <div class="card p-3 box-shadow black-bg">
                         <h4 class="card-title">Top Artists</h4>
                         <table class="table">
                             <thead>
                                 <tr>
-                                    <th class="col-2">#</th>
-                                    <th class="col-5">Artist</th>
-                                    <th class="col-5">Count</th>
+                                    <th class="col-1">#</th>
+                                    <th class="col-7">Artist</th>
+                                    <th class="col-4">Count</th>
                                 </tr>
                             </thead>
                             <tbody id="artist-data">
                                 <tr>
-                                    <th>{{number}}</th>
-                                    <td>{{name}}</td>
-                                    <td>{{count}} tracks</td>
+                                    <th>
+                                        <p class="placeholder-glow">
+                                            <span class="placeholder col-12"></span>
+                                        </p>
+                                    </th>
+                                    <td>
+                                        <p class="placeholder-glow">
+                                            <span class="placeholder col-12"></span>
+                                        </p>
+                                    </td>
+                                    <td>
+                                        <p class="placeholder-glow">
+                                            <span class="placeholder col-12"></span>
+                                        </p>
+                                    </td>
                                 </tr>
                                 <tr>
-                                    <th>{{number}}</th>
-                                    <td>{{name}}</td>
-                                    <td>{{count}} tracks</td>
+                                    <th>
+                                        <p class="placeholder-glow">
+                                            <span class="placeholder col-12"></span>
+                                        </p>
+                                    </th>
+                                    <td>
+                                        <p class="placeholder-glow">
+                                            <span class="placeholder col-12"></span>
+                                        </p>
+                                    </td>
+                                    <td>
+                                        <p class="placeholder-glow">
+                                            <span class="placeholder col-12"></span>
+                                        </p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>
+                                        <p class="placeholder-glow">
+                                            <span class="placeholder col-12"></span>
+                                        </p>
+                                    </th>
+                                    <td>
+                                        <p class="placeholder-glow">
+                                            <span class="placeholder col-12"></span>
+                                        </p>
+                                    </td>
+                                    <td>
+                                        <p class="placeholder-glow">
+                                            <span class="placeholder col-12"></span>
+                                        </p>
+                                    </td>
                                 </tr>
                             </tbody>
                         </table>
@@ -134,28 +185,182 @@
                 </div>
             </div>
             <!-- Match -->
-            <div id="match" class="row">
+            <div id="match" class="row opacity-0">
+                <h3 class="text-center">Your matching Artists and Genres with your friend</h3>
+                <h4 class="text-center">based on you and your friend's public playlists</h4>
                 <!-- artists -->
-                <div class="col-6 p-3 m-0">
-                    <div class="card box-shadow p-3">
+                <div class="col-md-6 col-sm-12 p-3 m-0">
+                    <div class="card box-shadow p-3 black-bg">
                         <div class="row">
-                            <div class="col text-center">
+                            <div class="col text-center ">
                                 <h3>Matching Artists</h3>
                             </div>
                         </div>
                         <div id="match-artist-data">
+                            <div class="card box-shadow my-3 black-bg" style="border-radius: 10px; overflow: hidden;">
+                                <div class="row gx-0 gx-md-4">
+                                    <div class="col-3">
+                                        <div class="row gx-0 gx-md-4 gx-0 h-100">
+                                            <div class="col-2 flex-grow-2 test img-card"
+                                                style="background-image: url('...');">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-7">
+                                        <div class="row h-50">
+                                            <div class="col m-auto text-center">
+                                                <p class="placeholder-glow mx-3 my-0">
+                                                    <span class="placeholder col-12"></span>
+                                                </p>
+                                            </div>
+                                        </div>
+                                        <div class="row gx-0 gx-md-4 h-50">
+                                            <div class="col-6 text-center">
+                                                <p class="placeholder-glow mx-3 my-0">
+                                                    <span class="placeholder col-12"></span>
+                                                </p>
+                                                <p class="placeholder-glow mx-3 my-0">
+                                                    <span class="placeholder col-12"></span>
+                                                </p>
+                                            </div>
+                                            <div class="col-6 text-center">
+                                                <p class="placeholder-glow mx-3 my-0">
+                                                    <span class="placeholder col-12"></span>
+                                                </p>
+                                                <p class="placeholder-glow mx-3 my-0">
+                                                    <span class="placeholder col-12"></span>
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-2 m-auto text-center">
+                                        <b>Score</b>
+
+                                        <p class="placeholder-glow mx-3 my-0">
+                                            <span class="placeholder col-12"></span>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card box-shadow my-3 black-bg" style="border-radius: 10px; overflow: hidden;">
+                                <div class="row gx-0 gx-md-4">
+                                    <div class="col-3">
+                                        <div class="row gx-0 gx-md-4 gx-0 h-100">
+                                            <div class="col-2 flex-grow-2 test img-card"
+                                                style="background-image: url('...');">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-7">
+                                        <div class="row h-50">
+                                            <div class="col m-auto text-center">
+                                                <p class="placeholder-glow mx-3 my-0">
+                                                    <span class="placeholder col-12"></span>
+                                                </p>
+                                            </div>
+                                        </div>
+                                        <div class="row gx-0 gx-md-4 h-50">
+                                            <div class="col-6 text-center">
+                                                <p class="placeholder-glow mx-3 my-0">
+                                                    <span class="placeholder col-12"></span>
+                                                </p>
+                                                <p class="placeholder-glow mx-3 my-0">
+                                                    <span class="placeholder col-12"></span>
+                                                </p>
+                                            </div>
+                                            <div class="col-6 text-center">
+                                                <p class="placeholder-glow mx-3 my-0">
+                                                    <span class="placeholder col-12"></span>
+                                                </p>
+                                                <p class="placeholder-glow mx-3 my-0">
+                                                    <span class="placeholder col-12"></span>
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-2 m-auto text-center">
+                                        <b>Score</b>
+
+                                        <p class="placeholder-glow mx-3 my-0">
+                                            <span class="placeholder col-12"></span>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
                 <!-- genres -->
-                <div class="col-6 p-3 m-0">
-                    <div class="card box-shadow p-3">
+                <div class="col-md-6 col-sm-12 p-3 m-0">
+                    <div class="card box-shadow p-3 black-bg">
                         <div class="row">
                             <div class="col text-center">
                                 <h3>Matching Genres</h3>
                             </div>
                         </div>
                         <div id="match-genre-data">
+                            <div class="card box-shadow my-3 black-bg" style="border-radius: 10px; overflow: hidden;">
+                                <div class="row gx-0 gx-md-4">
+                                    <div class="col-5 m-auto text-center">
+                                        <p class="placeholder-glow mx-3 my-0">
+                                            <span class="placeholder col-12"></span>
+                                        </p>
+                                    </div>
+                                    <div class="col-4">
+                                        <div class="row gx-0 gx-md-4 h-50">
+                                            <div class="col m-auto my-2 text-center">
+                                                <p class="placeholder-glow mx-3 my-0">
+                                                    <span class="placeholder col-12"></span>
+                                                </p>
+                                            </div>
+                                        </div>
+                                        <div class="row gx-0 gx-md-4 h-50">
+                                            <div class="col m-auto my-2 text-center">
+                                                <p class="placeholder-glow mx-3 my-0">
+                                                    <span class="placeholder col-12"></span>
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-3 m-auto text-center">
+                                        <b>Score</b>
+                                        <p class="placeholder-glow mx-3 my-0">
+                                            <span class="placeholder col-12"></span>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card box-shadow my-3 black-bg" style="border-radius: 10px; overflow: hidden;">
+                                <div class="row gx-0 gx-md-4">
+                                    <div class="col-5 m-auto text-center">
+                                        <p class="placeholder-glow mx-3 my-0">
+                                            <span class="placeholder col-12"></span>
+                                        </p>
+                                    </div>
+                                    <div class="col-4">
+                                        <div class="row gx-0 gx-md-4 h-50">
+                                            <div class="col m-auto my-2 text-center">
+                                                <p class="placeholder-glow mx-3 my-0">
+                                                    <span class="placeholder col-12"></span>
+                                                </p>
+                                            </div>
+                                        </div>
+                                        <div class="row gx-0 gx-md-4 h-50">
+                                            <div class="col m-auto my-2 text-center">
+                                                <p class="placeholder-glow mx-3 my-0">
+                                                    <span class="placeholder col-12"></span>
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-3 m-auto text-center">
+                                        <b>Score</b>
+                                        <p class="placeholder-glow mx-3 my-0">
+                                            <span class="placeholder col-12"></span>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -163,251 +368,17 @@
         </div>
     </div>
 
-    <script id="match-artist-template" type="text/x-handlebars-template">
-        <div class="card box-shadow my-3" style="border-radius: 10px; overflow: hidden;">
-            <div class="row">
-                <div class="col-3">
-                    <div class="row gx-0 h-100">
-                        <div class="col-2 flex-grow-2 test img-artist" style="background-image: url({{image}});"">
-                        </div>
-                    </div>
-                </div>
-                <div class="col-7">
-                    <div class="row h-50">
-                        <div class="col m-auto text-center">
-                            <b>#{{number}} {{artist_name}}</b>
-                        </div>
-                    </div>
-                    <div class="row h-50">
-                        <div class="col-6 text-center">
-                            <b>{{user_name}}</b><br>{{user_count}} tracks
-                        </div>
-                        <div class="col-6 text-center">
-                            <b>{{friend_name}}</b><br>{{friend_count}} tracks
-                        </div>
-                    </div>
-                </div>
-                <div class="col-2 m-auto text-center">
-                            <b>Score<br>{{score}}</b>
-                </div>
-            </div>
-        </div>
-    </script>
-
-    <script id="match-genre-template" type="text/x-handlebars-template">
-        <div class="card box-shadow my-3" style="border-radius: 10px; overflow: hidden;">
-            <div class="row">
-                <div class="col-6 m-auto text-center">
-                    <b>#{{number}} {{genre_name}}</b>
-                </div>
-                <div class="col-4">
-                    <div class="row h-50">
-                        <div class="col m-auto text-center">
-                            <b>{{user_name}}</b><br>{{user_count}} tracks
-                        </div>
-                    </div>
-                    <div class="row h-50">
-                        <div class="col m-auto text-center">
-                            <b>{{friend_name}}</b><br>{{friend_count}} tracks
-                        </div>
-                    </div>
-                </div>
-                <div class="col-2 m-auto text-center">
-                            <b>Score<br>{{score}}</b>
-                </div>
-            </div>
-        </div>
-    </script>
-
-    <script id="user-profile-template" type="text/x-handlebars-template">
-        <h2 class="my-3" style="text-align: center;">Logged in as {{display_name}}</h2>
-        <div class="card border-left flex-row box-shadow w-60 mx-auto my-3">
-            <div class="test img-profile" style="background-image: url({{images.0.url}});"></div>
-            <div class="card-body d-flex flex-column align-items-start pb-0">
-                <div class="row w-100">
-                    <div class="col-4">
-                        <h5>Display name</h5>
-                        <p class="clearfix">{{display_name}}</p>
-                        <h5>Id</h5>
-                        <p>{{id}}</p>
-                    </div>
-                    <div class="col-8">
-                        <h5>Spotify URI</h5>
-                        <p><a href="{{external_urls.spotify}}">{{external_urls.spotify}}</a></p>
-                        <h5>Link</h5>
-                        <p><a href="{{href}}">{{href}}</a></p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </script>
-
-    <script id="genre-template" type="text/x-handlebars-template">
-        <tr>
-            <th>{{number}}</th>
-            <td>{{name}}</td>
-            <td>{{count}} tracks</td>
-        </tr>
-    </script>
-
     <script src="//cdnjs.cloudflare.com/ajax/libs/handlebars.js/2.0.0-alpha.1/handlebars.min.js"></script>
     <script src="./js/bootstrap.bundle.min.js"></script>
+    <script src="./js/script.js"></script>
     <script>
-        let _genres = [], _artists = [], _matchArtists = [], _matchGenres = [];
-
         window.addEventListener('DOMContentLoaded', (event) => {
             getUserInfo();
         });
         window.addEventListener('hashchange', (event) => {
             getUserInfo();
         });
-        function getHashParams() {
-            var hashParams = {};
-            var e, r = /([^&;=]+)=?([^&;]*)/g,
-                q = window.location.hash.substring(1);
-            while (e = r.exec(q)) {
-                hashParams[e[1]] = decodeURIComponent(e[2]);
-            }
-            return hashParams;
-        }
 
-        function getUserInfo() {
-
-            const userProfileSource = document.getElementById('user-profile-template').innerHTML,
-                userProfileTemplate = Handlebars.compile(userProfileSource),
-                userProfilePlaceholder = document.getElementById('user-profile'),
-                params = getHashParams(),
-                user_id = params.user_id,
-                error = params.error,
-                login = document.getElementById('login'),
-                loggedin = document.getElementById('loggedin');
-
-            if (error) {
-                alert('There was an error during the authentication');
-            } else {
-                login.style.display = "block";
-                loggedin.style.display = "none";
-                if (user_id) {
-                    fetch(`/me/${user_id}`)
-                        .then(res => res.json())
-                        .then(res => {
-                            userProfilePlaceholder.innerHTML = userProfileTemplate(res);
-                            login.style.display = "none";
-                            loggedin.style.display = "block";
-                        })
-                }
-            }
-        }
-
-        function getGenre() {
-            const genreSource = document.getElementById('genre-template').innerHTML,
-                genreTemplate = Handlebars.compile(genreSource),
-                genrePlaceholder = document.getElementById('genre-data'),
-                artistPlaceholder = document.getElementById('artist-data'),
-                genres = document.getElementById('genres');
-            const params = getHashParams();
-            const user_id = params.user_id;
-            let html1 = '';
-            let html2 = '';
-            fetch(`/playlists/${user_id}/genres`)
-                .then(res => res.json())
-                .then(res => {
-                    console.log(res);
-                    res.genres.forEach((genre, i) => {
-                        _genres.push(genreTemplate({
-                            number: i + 1,
-                            name: genre.name,
-                            count: genre.count
-                        }))
-                    })
-                    res.artists.forEach((artist, i) => {
-                        _artists.push(genreTemplate({
-                            number: i + 1,
-                            name: artist.name,
-                            count: artist.count
-                        }))
-                    })
-                })
-                .then(res => {
-                    genres.style.display = "flex";
-                    genrePlaceholder.innerHTML = _genres.slice(0, 5).join('');
-                    artistPlaceholder.innerHTML = _artists.slice(0, 5).join('');
-                })
-        }
-
-        function matchTaste() {
-            const mGenreSource = document.getElementById('match-genre-template').innerHTML,
-                mArtistSource = document.getElementById('match-artist-template').innerHTML,
-                mGenreTemplate = Handlebars.compile(mGenreSource),
-                mArtistTemplate = Handlebars.compile(mArtistSource),
-                mGenreP = document.getElementById('match-genre-data'),
-                mArtistP = document.getElementById('match-artist-data'),
-                match = document.getElementById('match');
-            const params = getHashParams();
-            const user_id = params.user_id;
-            let htmlA = '', htmlG = '', friend_id = '';
-
-            const url = new URL(document.getElementById('friendUrl').value);
-            if ((url.host == 'open.spotify.com' && url.pathname.split('/')[1] == 'user') && user_id) {
-                friend_id = url.pathname.split('/')[2];
-
-                fetch(`/match/${user_id}/${friend_id}`)
-                    .then(res => res.json())
-                    .then(res => {
-                        const userData = res.user_data.display_name,
-                            friendData = res.friend_data.display_name,
-                            artists = res.artists,
-                            genres = res.genres;
-
-                        artists.forEach((artist, i) => {
-                            _matchArtists.push(mArtistTemplate({
-                                image: (artist.image) ? artist.image[0].url : null,
-                                number: i + 1,
-                                artist_name: artist.name,
-                                user_name: userData,
-                                user_count: artist.count[0],
-                                friend_name: friendData,
-                                friend_count: artist.count[1],
-                                score: artist.score.toFixed(2)
-                            }))
-                        })
-                        genres.forEach((genre, i) => {
-                            _matchGenres.push(mGenreTemplate({
-                                number: i + 1,
-                                genre_name: genre.name,
-                                user_name: userData,
-                                user_count: genre.count[0],
-                                friend_name: friendData,
-                                friend_count: genre.count[1],
-                                score: genre.score.toFixed(2)
-                            }))
-                        })
-
-                        mGenreP.innerHTML = _matchGenres.slice(0, 5).join('');
-                        mArtistP.innerHTML = _matchArtists.slice(0, 5).join('');
-                        match.style.display = "flex";
-                    })
-            } else {
-                alert('Wrong link!');
-                return;
-            }
-        }
-
-        function getUrl() {
-            const url = new URL(document.getElementById('url').value);
-            if (url.host == 'open.spotify.com' && url.pathname.split('/')[1] == 'user') {
-                window.location.href = `/#user_id=${url.pathname.split('/')[2]}`;
-            } else {
-                alert('Wrong link!');
-            }
-        }
-
-        function renderList(source, array, end, func) {
-            let html = '';
-            for (let i = 0; i < end; i++) {
-                html += func(array[i])
-            }
-        }
     </script>
 </body>
 
