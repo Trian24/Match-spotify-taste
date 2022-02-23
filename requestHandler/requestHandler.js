@@ -168,7 +168,8 @@ class requestHandler {
         name: found.name,
         count: [item_1.count, found.count],
         image: item_1.image,
-        score: (Math.min(...[item_1.count, found.count]) / Math.max(...[item_1.count, found.count]) * (item_1.count + found.count))
+        score: (Math.min(...[item_1.count, found.count]) / Math.max(...[item_1.count, found.count]) * (item_1.count + found.count)),
+        href : found.href
       })
     })
 

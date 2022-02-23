@@ -35,12 +35,12 @@ function getUserInfo() {
                 userProfilePlaceholder.innerHTML = `
                   <div class="row w-card m-auto">
                       <div class="col-12 col-md-6">
-                          <div class="card flex-row box-shadow mx-auto my-3 black-bg">
+                          <div class="card flex-row box-shadow mx-auto my-2 black-bg">
                               ${userProfileTemplate(res)}
                           </div>
                       </div>
                       <div class="col-12 col-md-6">
-                          <div class="card flex-row box-shadow mx-auto my-3 black-bg">
+                          <div class="card flex-row box-shadow mx-auto my-2 black-bg">
                               ${userProfileTemplate(res_f)}
                           </div>
                       </div>
@@ -100,7 +100,8 @@ function getGenre() {
           image: (artist.image && artist.image.length > 0) ? artist.image[0].url : null,
           number: i + 1,
           name: artist.name,
-          count: artist.count
+          count: artist.count,
+          url: artist.href
         }))
       })
     })
@@ -175,7 +176,8 @@ function matchTaste() {
             user_count: artist.count[0],
             friend_name: friendData,
             friend_count: artist.count[1],
-            score: artist.score.toFixed(2)
+            score: artist.score.toFixed(2),
+            url: artist.href
           }))
         })
         genres.forEach((genre, i) => {

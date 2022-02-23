@@ -2,27 +2,41 @@
   <div class="row gx-0 gx-md-4">
     <div class="col-3">
       <div class="row gx-0 gx-md-4 gx-0 h-100">
-        <div class="col-2 flex-grow-2 test img-card" style="background-image: url({{image}});">
-        </div>
+        <a href="{{url}}" target="_blank" class="col-2 flex-grow-2 test img-card" style="background-image: url({{image}});">
+        </a>
       </div>
     </div>
     <div class="col-7">
       <div class="row h-50">
-        <div class="col m-auto text-center">
-          <b>#{{number}} {{artist_name}}</b>
+        <div class="col m-auto text-center heading-5">
+          #{{number}} {{artist_name}}
         </div>
       </div>
-      <div class="row gx-0 gx-md-4 h-50">
+      <div class="row gx-0 gx-md-4 h-50 mb-3">
         <div class="col-6 text-center">
-          <b>{{user_name}}</b><br/>{{user_count}} tracks
+          <div class="row">
+            <div class="col-12 text-bold">
+              {{user_name}}
+            </div>
+            <div class="col-12">
+              {{user_count}} tracks
+            </div>
+          </div>
         </div>
         <div class="col-6 text-center">
-          <b>{{friend_name}}</b><br/>{{friend_count}} tracks
+          <div class="row">
+            <div class="col-12 text-bold">
+              {{friend_name}}
+            </div>
+            <div class="col-12">
+              {{friend_count}} tracks
+            </div>
+          </div>
         </div>
       </div>
     </div>
-    <div class="col-2 m-auto text-center">
-      <b>Score<br/>{{score}}</b>
+    <div class="col-2 m-auto text-center heading-5">
+      Score<br />{{score}}
     </div>
   </div>
 </div>

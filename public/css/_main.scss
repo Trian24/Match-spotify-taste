@@ -22,6 +22,11 @@ body {
   overflow: hidden;
 }
 
+.btn.black-bg:hover {
+  color: black !important;
+  border-color: black !important;
+}
+
 .box-shadow {
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
 }
@@ -31,7 +36,7 @@ body {
 }
 
 .w-card {
-  max-width: 80%;
+  max-width: 95%;
 }
 
 .text-overflow {
@@ -90,6 +95,14 @@ body {
     height: auto;
   }
 
+  .heading-4 {
+    font-size: 1.15rem;
+    font-weight: bold;
+  }
+  .heading-5 {
+    font-size: 1.1rem;
+    font-weight: bold;
+  }
 }
 
 @media (min-width: 1366px) {
@@ -125,4 +138,14 @@ body {
   opacity: 0 !important;
   padding: 0 !important;
   margin: 0 !important;
+}
+
+.heading-4 {
+  font-weight: bold;
+}
+.heading-5 {
+  font-weight: bold;
+}
+.text-bold {
+  font-weight: bold;
 }
