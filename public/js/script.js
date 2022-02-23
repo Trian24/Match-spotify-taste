@@ -95,8 +95,9 @@ function getGenre() {
         }))
       })
       artists.forEach((artist, i) => {
+        console.log(artist.image);
         _artists.push(artistTemplate({
-          image: (artist.image) ? artist.image[0].url : null,
+          image: (artist.image && artist.image.length > 0) ? artist.image[0].url : null,
           number: i + 1,
           name: artist.name,
           count: artist.count
