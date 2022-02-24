@@ -24,7 +24,7 @@ npm install
 Make .env file in the root folder, and fill it with your own client ID and client Secret
 Example .env file:
 ```
-HOSTNAME=*Your application hostname (Example: "http://localhost:8888/")*
+HOSTNAME=*Your application hostname (Example: "http://localhost:5500/")*
 PORT=*Your application port (Example: "5500")*
 CLIENT_ID=*Client ID you got from your Spotify Dev Dashboard*
 CLIENT_SECRET=*Client Secret you got from your Spotify Dev Dashboard*
