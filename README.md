@@ -1,7 +1,5 @@
 # Match-spotify-taste
-An application to match your spotify public playlist with your friend
-
-## Description
+An application to match your spotify public playlist with your friend. 
 Available to use in https://match-taste.herokuapp.com/
 
 ## What this app does
