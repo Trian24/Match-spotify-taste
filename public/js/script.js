@@ -36,12 +36,12 @@ function getUserInfo() {
                   <div class="row w-card m-auto">
                       <div class="col-12 col-md-6">
                           <div class="card flex-row box-shadow mx-auto my-2 black-bg">
-                              ${userProfileTemplate(res)}
+                              ${userProfileTemplate({...res, onClick: 'logout'})}
                           </div>
                       </div>
                       <div class="col-12 col-md-6">
                           <div class="card flex-row box-shadow mx-auto my-2 black-bg">
-                              ${userProfileTemplate(res_f)}
+                              ${userProfileTemplate({...res_f, onClick: 'removeFriend'})}
                           </div>
                       </div>
                   </div>
@@ -51,7 +51,7 @@ function getUserInfo() {
           } else {
             userProfilePlaceholder.innerHTML = `
                 <div class="card flex-row box-shadow mx-auto my-3 black-bg w-60">
-                    ${userProfileTemplate(res)}
+                    ${userProfileTemplate({...res, onClick: 'logout'})}
                 </div>`;
           }
         })
@@ -206,6 +206,17 @@ function getUrl() {
   } else {
     alert('Wrong link!');
   }
+}
+
+function logout() {
+  window.location.href = '/';
+}
+
+function removeFriend() {
+  const location = window.location.search,
+  params = new URLSearchParams(location),
+  user_id = params.get('user_id');
+  window.location.href = `/?user_id=${user_id}`;
 }
 
 function renderList(source, array, end, func) {

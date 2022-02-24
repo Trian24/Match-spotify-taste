@@ -1,6 +1,6 @@
 const redirect_uri = `${process.env.HOSTNAME}callback`,
-  client_id = 'acf9cb927d5f4e05b950ec62381f76f1',
-  client_secret = 'bed105b30a7b44ba8e63521bee82d545',
+  client_id = process.env.CLIENT_ID,
+  client_secret = process.env.CLIENT_SECRET,
   generateRandomString = function (length) {
     let text = '';
     let possible = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
