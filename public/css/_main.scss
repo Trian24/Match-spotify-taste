@@ -1,0 +1,151 @@
+* {
+  font-family: 'Gotham', sans-serif;
+  color: $primary;
+}
+
+html,
+body {
+  background-color: #040404;
+}
+
+#login,
+#loggedin,
+#genres,
+#match {
+  display: none;
+}
+
+.black-bg {
+  border: 2px solid $border-color;
+  background-color: black;
+  border-radius: 24px;
+  overflow: hidden;
+}
+
+.btn.black-bg:hover {
+  color: black !important;
+  border-color: black !important;
+}
+
+.box-shadow {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+}
+
+.w-60 {
+  max-width: 75% !important;
+}
+
+.w-card {
+  max-width: 95%;
+}
+
+.text-overflow {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  width: 500px;
+}
+
+.gx-0 {
+  --bs-gutter-x: 0 !important;
+}
+
+.img-card {
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.border-right-profile {
+  border-right: 2px solid $border-color;
+}
+
+.small-image {
+  display: inline-block;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  border-radius: 0.5rem;
+  height: 3.5rem;
+  width: 3.5rem;
+}
+
+.text-table {
+  flex-grow: 1;
+}
+
+.test {
+  flex: 2 0 auto;
+  height: auto;
+}
+
+.test::before {
+  content: '';
+  display: block;
+  padding-top: 100%;
+}
+
+@media (min-width: 768px) {
+  .w-60 {
+    max-width: 40% !important;
+  }
+
+  .test {
+    flex: 1 0 auto;
+    height: auto;
+  }
+
+  .heading-4 {
+    font-size: 1.15rem;
+    font-weight: bold;
+  }
+  .heading-5 {
+    font-size: 1.1rem;
+    font-weight: bold;
+  }
+}
+
+@media (min-width: 1366px) {
+  .w-60 {
+    max-width: 35% !important;
+  }
+
+  .w-card {
+    max-width: 75%;
+  }
+}
+
+.btn-primary {
+  background-color: black !important;
+  color: $primary;
+  border-color: transparent;
+}
+
+.transition {
+  transition: all 1.5s;
+}
+
+.fade-up-start {
+  position: relative;
+  top: 0px;
+  max-height: 100px;
+  overflow: hidden;
+}
+
+.fade-up {
+  top: -5px !important;
+  max-height: 0px !important;
+  opacity: 0 !important;
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+.heading-4 {
+  font-weight: bold;
+}
+.heading-5 {
+  font-weight: bold;
+}
+.text-bold {
+  font-weight: bold;
+}
